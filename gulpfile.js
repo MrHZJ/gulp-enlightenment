@@ -42,7 +42,7 @@ gulp.task('less', function () {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('src/css/'))
+        .pipe(gulp.dest('src/style/css/'))
         .pipe(reload({stream: true}));
 });
 gulp.task('cssCopy', function () {
