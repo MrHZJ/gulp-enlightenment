@@ -72,7 +72,15 @@ gulp.task('script', function () {
     .pipe(reload({stream: true}));
 });
 
-
+// 最小化照片
+const imagemin = require('gulp-imagemin');
+ 
+gulp.task('imgmin', () =>
+    gulp.src('src/images/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'))
+        .pipe(reload({stream: true}));
+);
 
 //打开服务器
 // Static server
@@ -89,6 +97,7 @@ gulp.task('serve', function() {
 
    //gulp.watch("src/js/*.js",["script"]); //压缩合并js,有时候可能不用合并，看情况script任务与jsconcat任务取其中一个即可
    gulp.watch("src/js/*.js",["jsmin"]); //压缩合并js,有时候可能不用合并，看情况
+   gulp.watch("src/images/*",["imgmin"]); //压缩合并js,有时候可能不用合并，看情况
 });
 
 
